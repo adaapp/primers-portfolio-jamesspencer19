@@ -2,7 +2,7 @@
 
 ## Section 1 - Primer Challenges
 ### Primer 1 - Fahrenheit / Centigrade Conversion
-This challenge requires us to allow a user to enter a value before selecting whether to convert it from Fahrenheit to Centigrade or Centigrade to Fahrenheit.  As part of the initial design the conversion algorithms were needed for both calculations. 
+This challenge requires us to allow a user to enter a value before selecting whether to convert it from Fahrenheit to Centigrade or Centigrade to Fahrenheit. As part of the initial design the conversion algorithms were needed for both calculations. 
 
 To help complete this challenge I needed to break the overall problem down into the following main tasks: 
 * Get data from the user
@@ -14,10 +14,14 @@ To help complete this challenge I needed to break the overall problem down into 
 The biggest issue was related to testing the areas my solution failed, originally, I tested to see if it worked - however, it wasn’t until I tried to break it that I found some of the more serious issues with my design and implementation.  For example, ...
 
 ### Primer 2 - Self-service Checkout
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac elit in magna porttitor convallis. Ut eu justo rutrum, luctus lorem a, pretium quam. Sed ut commodo lectus. Vestibulum ut ligula lorem. Nulla mattis varius ex ac luctus. Aenean nec laoreet enim. Sed lorem erat, vestibulum ut faucibus vel, pellentesque nec felis. Vivamus metus tellus, pretium eu sodales interdum, fringilla ut mauris. ....
+This challenge requires us to allow the user to enter a quantity of an item and then followed by the ‘per item’ cost. This process is then repeated until the quantity entered is <= 0. At which point three values are calculated and displayed to the user.
 
-..  
-..  
+To complete this challenge I broke the task down into the following steps:
+* Create a loop that repeatedly asks the user for the amount of items and the price per the item, which stops when the user enters zero.
+* To take this information and calculate the: Subtotal, Shopping Tax and the overall Total.
+
+#### Reflection (as well as issues, challenges & resolutions)
+An issue that I encountered whilst completing Primer 2 was how I should approach the loop to ask the user to enter item quantity and price. The resolution to this was to research the different types of loops, I came to the conclusion to use a while loop. Another issue that I faced was with the rounding of the Subtotal, Shopping Tax and Total, this is where I had to multiply the value by 100 and then divide by 100 to round the float to 2dp.
 
 ---
 ## Section 2 - Programming Paradigms
