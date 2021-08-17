@@ -6,6 +6,10 @@ float ctof(float c) {
   return ((c * 9 / 5) + 32); //Centigrade to Fahrenheit.
 }
 
+float ktoc(float k) {
+  return(k + 273.15); //Centigrade to Kelvin
+}
+
 void fahrenheitCentigradeConversion(void) {
   //Users conversion choice
   std::string temp;
@@ -16,31 +20,48 @@ void fahrenheitCentigradeConversion(void) {
   //Converted temperature
   float t = 0.0;
 
-  //Asking the user to enter the temperature that they want to be converted
-  std::cout << "\nPlease enter the starting temperature: ";
-  //The temperature is stored
-  std::cin >> ot;
+  int error = 0;
 
-  //Asking the user which conversion they want to make
-  std::cout << "\nPress ‘C’ to convert from Fahrenheit to Centigrade";
-  std::cout << "\nPress ‘F’ to convert from Centigrade to Fahrenheit.\n\n";
 
-  //Displaying the users choice
-  std::cout << "\nYour choice: ";
+  do{
+    //Asking the user to enter the temperature that they want to be converted
+    std::cout << "\nPlease enter the starting temperature: ";
+    //The temperature is stored
+    std::cin >> ot;
+
+    //Asking the user which conversion they want to make
+    std::cout << "\nPress ‘C’ to convert from Fahrenheit to Centigrade";
+    std::cout << "\nPress ‘F’ to convert from Centigrade to Fahrenheit";
+    std::cout << "\nPress ‘K’ to convert from Centigrade to Kelvin.\n\n";
+
+    //Displaying the users choice
+    std::cout << "\nYour choice: ";
     std::cin >> temp;
 
-  //If the user answers c or C the fahrenheit to centigrade conversion is used
-  if(temp == "C" || temp == "c") {
-    t = ftoc(ot);
-    label = "Fahrenheit";
-  }
+    //If the user answers c or C the fahrenheit to centigrade conversion is used
+    if(temp == "C" || temp == "c") {
+      t = ftoc(ot);
+      label = "Fahrenheit";
+    }
     //If the user answers c or C the centigrade to fahrenheit conversion is used
-  if(temp == "F" || temp == "f") {
-    t = ctof(ot);
-    label = "Centigrade";
-  }
-  //The converted temperature is displayed to the user
-  std::cout << ot << " degrees " << label << " is = " << t << "\n";
+    if(temp == "F" || temp == "f") {
+      t = ctof(ot);
+      label = "Centigrade";
+    }
+    //If the user answers k or K the centigrade to fahrenheit conversion is used
+    if(temp == "K" || temp == "k") {
+      t = ktoc(ot);
+      label = "Kelvin";
+    }
+    //The converted temperature is displayed to the user
+    std::cout << ot << " degrees " << label << " is = " << t << "\n";
+    if (std::cin.fail()){
+        std::cout << "Please enter a valid integer";
+        error = 1;
+        std::cin.clear();
+        std::cin.ignore(80, '\n');
+    }
+  }while(error == 1);
 }
 
 
