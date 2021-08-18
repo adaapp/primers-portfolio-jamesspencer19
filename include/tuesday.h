@@ -79,9 +79,9 @@ void passwordComplexityChecker(void) {
 
 void employeeListRemoval(void) {
   //initialize array 
-  std::string employees[5] = {"John Smith","Jaelynn Stuart","Kaley Barajas","Walter Collier","Cale Myers"};
+  std::vector<std::string> employees = {"John Smith","Jaelynn Stuart","Kaley Barajas","Walter Collier","Cale Myers"};
  
   //printing Strings stored in array
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < employees.size(); i++)
     std::cout << employees[i] << "\n";
 }
