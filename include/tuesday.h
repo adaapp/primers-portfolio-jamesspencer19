@@ -34,12 +34,23 @@ int passwordChecker(std::string password) {
       std::cout<<"special";
     }
   }
-  return 0;
+  if(passwordLength == letters || passwordLength == numbers){
+    return 1;
+  }
+  if(passwordLength >= 8 && numbers >= 2 && letters >=4){
+    return 2;
+  }
+  if(passwordLength >= 8 && numbers >= 2 && letters >=4 && specialCharacters >= 1){
+    return 3;
+  }
+  else{
+    return 4;
+  }
 }
 
 
 void passwordComplexityChecker(void) {
-  //store the password as a string
+  //sets the password as a string
   std::string pass;
   //ask the user to enter their password
   std::cout<<"Password: ";
@@ -47,9 +58,30 @@ void passwordComplexityChecker(void) {
   std::cin>>pass;
   //passes the password through the checker
   passwordChecker(pass);
+  //sets the complexity as a string
+  std::string complexity;
+
+  if(passwordChecker(pass) == 1){
+    complexity = "weak";
+  }
+  if(passwordChecker(pass) == 2){
+    complexity = "strong";
+  }
+  if(passwordChecker(pass) == 3){
+    complexity = "very strong";
+  }
+  if(passwordChecker(pass) == 4){
+    complexity = "moderate";
+  }
+  std::cout<<"Your password is: " << complexity;
 }
 
 
 void employeeListRemoval(void) {
-	std::cout << " - employeeListRemoval: not yet implemented\n\n";
+  //initialize array 
+  std::string employees[5] = {"John Smith","Jaelynn Stuart","Kaley Barajas","Walter Collier","Cale Myers"};
+ 
+  //printing Strings stored in array
+  for (int i = 0; i < 5; i++)
+    std::cout << employees[i] << "\n";
 }
