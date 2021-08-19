@@ -11,12 +11,12 @@ void phoneDirectory(void) {
   std::cout<<"Please enter a name or number to search: ";
   getline(std::cin, search);
 
-  fileobject.open("phonebook.csv");
+  fileobject.open("primer5.csv");
   for (numberlines = 0; std::getline(fileobject, line); ++numberlines);
   std::cout<<"Searching "<<numberlines<<" records...\n\n";
   fileobject.close();
 
-  fileobject.open("phonebook.csv");
+  fileobject.open("primer5.csv");
   while(!fileobject.eof()){
     getline(fileobject, name ,',');
     getline(fileobject, number);
@@ -32,5 +32,16 @@ void phoneDirectory(void) {
 
 
 void dataFileParser(void) {
-	std::cout << " - dataFileParser: not yet implemented\n\n";
+  std::string firstname;
+  std::string surname;
+  std::string salary;
+  std::ifstream fileobject; 
+
+  fileobject.open("primer6.csv");
+  while(!fileobject.eof()){
+    getline(fileobject, firstname ,',');
+    getline(fileobject, surname, ',');
+    getline(fileobject, salary);
+    std::cout<<firstname<<" "<<surname<<" "<<salary<<"\n";
+  }
 }
