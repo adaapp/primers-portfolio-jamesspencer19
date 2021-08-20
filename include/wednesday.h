@@ -1,4 +1,8 @@
+#include <iostream>
 #include <fstream>
+#include <sstream>
+#include <vector>
+#include <iomanip>
 
 void phoneDirectory(void) {
   std::string name;
@@ -32,16 +36,4 @@ void phoneDirectory(void) {
 
 
 void dataFileParser(void) {
-  std::string firstname;
-  std::string surname;
-  std::string salary;
-  std::ifstream fileobject; 
-
-  fileobject.open("primer6.csv");
-  while(!fileobject.eof()){
-    getline(fileobject, firstname ,',');
-    getline(fileobject, surname, ',');
-    getline(fileobject, salary);
-    std::cout<<firstname<<" "<<surname<<" "<<salary<<"\n";
-  }
 }
