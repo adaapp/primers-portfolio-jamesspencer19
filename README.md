@@ -1,5 +1,8 @@
 # Primer Portfolio
-
+### TODO:
+* Primer 5 2 entries with same name
+* Primer 6
+ 
 ## Section 1 - Primer Challenges
 ### Primer 1 - Fahrenheit / Centigrade Conversion
 This challenge requires us to allow a user to enter a value before selecting whether to convert it from Fahrenheit to Centigrade or Centigrade to Fahrenheit. As part of the initial design the conversion algorithms were needed for both calculations. 
