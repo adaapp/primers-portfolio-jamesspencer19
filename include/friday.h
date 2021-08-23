@@ -1,61 +1,84 @@
 class car {
   private:
+    //default colour and make declared
+    const std::string DEFAULT_COLOUR = "Blue";
+    const std::string DEFAULT_MAKE = "Honda";
+    //car colour and make
     std::string carcolour; 
     std::string carmake; 
+    //engine on default false
     bool engineturnedon = false;
+    //car locked default false
     bool carlocked = false;
 
-    void init_car(std::string colour, std::string make, bool running, bool islocked) {
+    //initialise car
+    void init_car(std::string colour, std::string make) {
       carcolour = colour;
       carmake = make;
-      engineturnedon = running;
-      carlocked = islocked;
     }
 
 
   public:
+    //if a colour or name isn't provided the car is created with default params
+    car(std::string colour = "", std::string make = "") {
+      if (colour == "") {
+        colour = DEFAULT_COLOUR;
+      }
+      if (make == "") {
+        make = DEFAULT_MAKE;
+      }
+      init_car(colour, make);
+    }
+
+    ~car() {
+      std::cout << "\ndestroyed\n";
+    }
+
+    //getter an setter for car colour
     void set_colour(std::string colour) { 
       carcolour = colour;
     }
     std::string get_colour(void) { 
       return carcolour;
     }
-
+    //getter an setter for car make
     void set_make(std::string make) { 
       carmake = make;
     }
     std::string get_make(void) { 
       return carmake;
     }
-
+    //turn engine on if not on already
     void engine_on(void) {
-      if(engineturnedon){
+      if(engineturnedon) {
         std::cout<<"\nThe engine is already running\n";
-        engineturnedon = true;
-      }else{
+      } else {
+        std::cout<<"\nStarting the engine...\n";
         engineturnedon = true;
       }
     } 
-    void engine_off(void){
-      if(engineturnedon == false){
+    //turn engine off if not off already
+    void engine_off(void) {
+      if(engineturnedon == false) {
         std::cout<<"\nThe engine is already off\n";
-        engineturnedon = false;
-      }else{
+      } else {
+        std::cout<<"\nStopping the engine...\n";
         engineturnedon = false;
       }
     };
 
+    //lock car if not locked already
     void locked(bool islocked) { 
+      std::string lockedlabel;
       if(islocked == carlocked) {
-        std::cout<<"\nThe car is already locked\n";
-        carlocked = true;
+        lockedlabel = islocked ? "locked" : "unlocked";
+        std::cout<<"\nThe car is already " << lockedlabel << "\n";
       } else {
-        std::cout<<"\nThe car is already unlocked\n";
-        carlocked = false;
+        carlocked = islocked;
       }
     } 
 
-
+    //provide the overall status of the car
     void status(void) {
       std::string enginelabel;
       std::string lockedlabel;
@@ -64,72 +87,58 @@ class car {
       carlocked ? lockedlabel = "Locked" : lockedlabel = "Unlocked";
 
       std::cout << "\nCar Status: Colour: " << carcolour << ", Make: " << carmake << ", Engine: " << enginelabel << ", " << lockedlabel<<"\n";
-      }
+    }
 };
 
 
 void carClass() {
-  int menu;
+  //users input for interaction menu
+  std::string input;
+  //users input for car make
   std::string mycarMake;
+  //users input for car colour
   std::string mycarColour;
+  //interaction menu answer as integer
   int interaction;
-  car mycar;
+
+  //asking user to enter car make
+  std::cout << "Enter car make: ";
+  getline(std::cin,mycarMake);
+  //asking user to enter car colour
+  std::cout<<"Enter car colour: ";
+  getline(std::cin,mycarColour);
+  car mycar(mycarColour, mycarMake);
 
   while (true) {
-    std::cout<<"Car Menu:\n1: Create a Car\n2: Check Car's Status\n3: Edit car\nPlease select an option (or 0 to finish): ";
-    std::cin>>menu;
-    switch(menu){
-    case 1:
-    std::cout<<"Enter car make: ";
-    std::cin>>mycarMake;
-    mycar.set_make(mycarMake);
-    std::cout<<"Enter car colour: ";
-    std::cin>>mycarColour;
-    mycar.set_colour(mycarColour);
     mycar.status();
-    break;
-
-    case 2:
-    mycar.status();
-    break;
-
-    case 3:
     std::cout<<"Interation Menu:\n1: Turn Engine On\n2: Turn Engine Off\n3: Lock Car\n4: Unlock Car\nPlease select an option (or 0 to finish): ";
-    std::cin>>interaction;
-    switch(interaction){
-      case 1:
-      mycar.engine_on();
-      mycar.status();
-      break;
-      case 2:
-      mycar.engine_off();
-      mycar.status();
-      break;
-      case 3:
-      mycar.locked(true);
-      mycar.status();
-      break;
-      case 4:
-      mycar.locked(false);
-      mycar.status();
-      break;
-      case 0:
-      break;
-      default:
-      std::cout << "Not a Valid Choice. \n";
-      std::cout << "Choose again.\n";
-      std::cin >> interaction;
-      break;
+    getline(std::cin, input);
+    try {
+      interaction = stoi(input);
     }
-    break;
-    case 0:
-    return;
-    default:
-    std::cout << "Not a Valid Choice. \n";
-    std::cout << "Choose again.\n";
-    std::cin >> menu;
-    break;
-  }
+    catch (std::invalid_argument error) {
+      interaction = 99;
+    }
+    switch(interaction) {
+      case 1:
+        mycar.engine_on();
+        break;
+      case 2:
+        mycar.engine_off();
+        break;
+      case 3:
+        mycar.locked(true);
+        break;
+      case 4:
+        mycar.locked(false);
+        break;
+      case 0:
+        return;
+        break;
+      default:
+        std::cout << "Not a Valid Choice. \n";
+        std::cout << "Choose again.\n";
+    }
   }
 }
 
