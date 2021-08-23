@@ -30,7 +30,7 @@ class car {
 
     void engine_on(void) {
       if(engineturnedon){
-        std::cout<<"The engine is already running\n";
+        std::cout<<"\nThe engine is already running\n";
         engineturnedon = true;
       }else{
         engineturnedon = true;
@@ -38,7 +38,7 @@ class car {
     } 
     void engine_off(void){
       if(engineturnedon == false){
-        std::cout<<"The engine is already off\n";
+        std::cout<<"\nThe engine is already off\n";
         engineturnedon = false;
       }else{
         engineturnedon = false;
@@ -46,9 +46,11 @@ class car {
     };
 
     void locked(bool islocked) { 
-      if(islocked) {
+      if(islocked == carlocked) {
+        std::cout<<"\nThe car is already locked\n";
         carlocked = true;
       } else {
+        std::cout<<"\nThe car is already unlocked\n";
         carlocked = false;
       }
     } 
@@ -61,7 +63,7 @@ class car {
       engineturnedon ? enginelabel = "Running" : enginelabel = "Off";
       carlocked ? lockedlabel = "Locked" : lockedlabel = "Unlocked";
 
-      std::cout << "\n Car Status: colour: " << carcolour << ", make: " << carmake << ", engine: " << enginelabel << ", " << lockedlabel<<"\n";
+      std::cout << "\nCar Status: Colour: " << carcolour << ", Make: " << carmake << ", Engine: " << enginelabel << ", " << lockedlabel<<"\n";
       }
 };
 
