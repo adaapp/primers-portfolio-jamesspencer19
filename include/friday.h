@@ -1,5 +1,3 @@
-#include <iostream>
-
 class car {
   private:
     std::string carcolour; 
@@ -30,11 +28,21 @@ class car {
       return carmake;
     }
 
-    void engine_on(void) { 
-      engineturnedon = true;
+    void engine_on(void) {
+      if(engineturnedon){
+        std::cout<<"The engine is already running\n";
+        engineturnedon = true;
+      }else{
+        engineturnedon = true;
+      }
     } 
     void engine_off(void){
-      engineturnedon = false;
+      if(engineturnedon == false){
+        std::cout<<"The engine is already off\n";
+        engineturnedon = false;
+      }else{
+        engineturnedon = false;
+      }
     };
 
     void locked(bool islocked) { 
@@ -64,10 +72,11 @@ void carClass() {
   std::string mycarColour;
   int interaction;
   car mycar;
-  std::cout<<"Car Menu:\n1: Create a Car\n2: Check Car's Status\n3: Edit car\n";
-  std::cin>>menu;
 
-  switch(menu){
+  while (true) {
+    std::cout<<"Car Menu:\n1: Create a Car\n2: Check Car's Status\n3: Edit car\nPlease select an option (or 0 to finish): ";
+    std::cin>>menu;
+    switch(menu){
     case 1:
     std::cout<<"Enter car make: ";
     std::cin>>mycarMake;
@@ -76,24 +85,49 @@ void carClass() {
     std::cin>>mycarColour;
     mycar.set_colour(mycarColour);
     mycar.status();
-    carClass();
     break;
 
     case 2:
     mycar.status();
-    carClass();
-
-    case 3:
-    std::cout<<"1. Turn Engine On\n2. Turn Engine Off\n3. Lock Car\n4. Unlock Car";
-    std::cin>>interaction;
-    carClass();
     break;
 
+    case 3:
+    std::cout<<"Interation Menu:\n1: Turn Engine On\n2: Turn Engine Off\n3: Lock Car\n4: Unlock Car\nPlease select an option (or 0 to finish): ";
+    std::cin>>interaction;
+    switch(interaction){
+      case 1:
+      mycar.engine_on();
+      mycar.status();
+      break;
+      case 2:
+      mycar.engine_off();
+      mycar.status();
+      break;
+      case 3:
+      mycar.locked(true);
+      mycar.status();
+      break;
+      case 4:
+      mycar.locked(false);
+      mycar.status();
+      break;
+      case 0:
+      break;
+      default:
+      std::cout << "Not a Valid Choice. \n";
+      std::cout << "Choose again.\n";
+      std::cin >> interaction;
+      break;
+    }
+    break;
+    case 0:
+    return;
     default:
     std::cout << "Not a Valid Choice. \n";
     std::cout << "Choose again.\n";
     std::cin >> menu;
     break;
+  }
   }
 }
 
