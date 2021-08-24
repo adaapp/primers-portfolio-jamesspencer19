@@ -111,6 +111,7 @@ void carClass() {
 
   while (true) {
     mycar.status();
+    //Displays the interaction menu to the user
     std::cout<<"Interation Menu:\n1: Turn Engine On\n2: Turn Engine Off\n3: Lock Car\n4: Unlock Car\nPlease select an option (or 0 to finish): ";
     getline(std::cin, input);
     try {
@@ -143,6 +144,29 @@ void carClass() {
 }
 
 
+struct shape{};
+class circle: public shape {
+  public:
+    float radius;
+    circle(){
+      radius = 0;
+    }
+    circle(float Radius){
+      radius = Radius;
+    }
+};
+
+
+class AreaOf{
+  private:
+    float PI = 3.1415;
+  public:
+    float size(circle Circle){
+      return PI*(Circle.radius*Circle.radius);
+    }
+};
+
 void areaOf(void) {
-		std::cout << " - areaOf: not yet implemented\n\n";
+  AreaOf area;
+  std::cout<<"Area of Circle (r = 4.5): "<<area.size(circle(4.5))<<"\n";
 }
