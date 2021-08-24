@@ -145,6 +145,7 @@ void carClass() {
 
 
 struct shape{};
+
 class circle: public shape {
   public:
     float radius;
@@ -156,6 +157,36 @@ class circle: public shape {
     }
 };
 
+class rectangle: public shape {
+  public:
+    float length;
+    float width;
+    rectangle(){
+      length = 0;
+      width = 0;
+    }
+    rectangle(float Length, float Width){
+      length = Length;
+      width = Width;
+    }
+};
+
+class trapezoid: public shape {
+  public:
+    float baseA;
+    float baseB;
+    float height;
+    trapezoid(){
+      baseA = 0;
+      baseB = 0;
+      height = 0;
+    }
+    trapezoid(float BaseA, float BaseB, float Height){
+      baseA = BaseA;
+      baseB = BaseB;
+      height = Height;
+    }
+};
 
 class AreaOf{
   private:
@@ -164,9 +195,17 @@ class AreaOf{
     float size(circle Circle){
       return PI*(Circle.radius*Circle.radius);
     }
+    float size(rectangle Rectangle){
+      return Rectangle.length*Rectangle.width;
+    }
+    float size(trapezoid Trapezoid){
+      return ((Trapezoid.baseA + Trapezoid.baseB)/2)*Trapezoid.height;
+    }
 };
 
 void areaOf(void) {
   AreaOf area;
   std::cout<<"Area of Circle (r = 4.5): "<<area.size(circle(4.5))<<"\n";
+  std::cout<<"Area of Rectangle (w = 4, l = 5.9): "<<area.size(rectangle(4,5.9))<<"\n";
+  std::cout<<"Area of Trapezoid (b = 14, h = 7.5, a = 6): "<<area.size(trapezoid(14,6,7.5));
 }
