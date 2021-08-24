@@ -143,15 +143,19 @@ void carClass() {
   }
 }
 
-
-struct shape{};
+struct shape {
+  float radius;
+  float length;
+  float width;
+  float baseA;
+  float baseB;
+  float height;
+};
 
 class circle: public shape {
   public:
-    float radius;
-    circle(){
-      radius = 0;
-    }
+    circle(){}
+    ~circle(){}
     circle(float Radius){
       radius = Radius;
     }
@@ -159,12 +163,8 @@ class circle: public shape {
 
 class rectangle: public shape {
   public:
-    float length;
-    float width;
-    rectangle(){
-      length = 0;
-      width = 0;
-    }
+    rectangle(){}
+    ~rectangle(){}
     rectangle(float Length, float Width){
       length = Length;
       width = Width;
@@ -173,14 +173,8 @@ class rectangle: public shape {
 
 class trapezoid: public shape {
   public:
-    float baseA;
-    float baseB;
-    float height;
-    trapezoid(){
-      baseA = 0;
-      baseB = 0;
-      height = 0;
-    }
+    trapezoid(){}
+    ~trapezoid(){}
     trapezoid(float BaseA, float BaseB, float Height){
       baseA = BaseA;
       baseB = BaseB;
