@@ -57,7 +57,7 @@ I first attempted this challenge by reading the file and directly comparing the 
 Primer 6 required me to process the records stored in a csv and then display them as a formatted, aligned and evenly spaced table. I approached this in a similar way to primer 5 by storing the contents of the csv in a 2d vector. And then comparing each entry in the csv to one another until I found the longest one. Then using ```setw()``` and the buffer to format my table.
 
 #### Reflection (as well as issues, challenges & resolutions)
-For Primer 6 I spent the majority of my time understanding sample code for the proccesses that were taken to format the data in the employee CSV file into the table that is displayed for the user. I then tried to optimise the code by separating where the user is displayed the table into a separate function however this led to various errors and I had to revert my code back to the sample.
+For Primer 6 I spent the majority of my time understanding sample code for the proccesses that were taken to format the data in the employee CSV file into the table that is displayed for the user. I then optimised the code by separating where the user is displayed the table into a separate function, which takes in the vector and the widths.
 
 ### Primer 7 - Sleep Timer
 For Primer 6 I created a C++ program that blocked further execution (in seconds, based on the value) of a passed parameter when called. To complete this I used the standard function```::sleep_for(std::chrono::seconds(seconds))```. This meant that the thread was paused for the given amount of time in seconds.
@@ -91,6 +91,7 @@ Simply put, a programming paradigm, for example, procedural, object-oriented, fu
 * Shared State
 * Mutable Data
 * Side Effects
+
 Certain code that runs individually in single threads do not encounter simultaneous processing errors, a pure function can help to prevent simultaneous processing errors occurring as parallel programming is easier. Functional Programming can also prove to be very useful to perform many different operations on the same set of data due to the use of pure functions, testing can also be much easier due to the use of pure functions. A functional program can be much easier to comprehend as it will be written at a much higher level. Another benefit of the use of Functional Programming is that functions can be immutable meaning that the immutable objects can not be changed, in comparison to Object-Oriented Programming when const is used the contents of the object can be reassigned. However Functional Programming is very difficult to scale up and is limited to mathematical calculations. This is therefore similar to Procedural Programming which also doesn't scale well into large systems.
 
 The next programming paradigm that I will be discussing will be the use of Object-Oriented Programming where data structures/objects are defined, each with their own properties or attributes. Each object can also contain its own procedures or methods, which are then used to interact with one another within a large piece of software. Object-Oriented Programming is great for building 

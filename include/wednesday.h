@@ -62,13 +62,42 @@ void phoneDirectory(void) {
   }
 }
 
-
-void dataFileParser(void) {
-  //declare variables
+void displayTable(std::vector<std::vector<std::string>> records, int widths[3]){
   int buffer = 2;
   int firstname = 0;
   int lastname = 1;
   int salary =2;
+  // first two lines printed based off of the spacing we calculated earlier
+  std::cout << std::left << std::setw(widths[firstname]) << "Initial" << std::setw(widths[lastname] + buffer) << "Last" << std::setw(widths[salary])  << "Salary"<< std::endl<<"\n"<< std::setw(widths[firstname]) << "--------" << std::setw(widths[lastname] + buffer) << "----------" << std::setw(widths[salary]) << "--------" << std::endl;
+  // for each record in the 2d vector
+  for (int col = 0; col < records.size(); col++) { 
+    // for each field in each record
+    for (int row = 0; row < records[col].size(); row++) { 
+      // if the field is an firstname
+      if (row == firstname) { 
+        //calculate the initial by getting first character of the first name
+        std::string initial = std::string(1, records[col][row].at(0)) + ".";
+        // space using the widths we calculated earlier
+        std::cout << std::setw(widths[row]) << initial; 
+      }
+      // if the field is a lastname
+      if (row == lastname) { 
+        //display the last name with the buffer
+        std::cout << std::setw(widths[row] + buffer) << records[col][row];
+      }
+      // if the field is a salary
+      if (row == salary) { 
+        //display the salary with a pound sign 
+        std::cout << std::left << "£" << records[col][row];
+      }
+    }
+    std::cout << std::endl;
+  }
+}
+
+
+void dataFileParser(void) {
+  //declare variables
   int widths[3] = {0, 0, 0};
   std::string line;
   std::vector<std::vector<std::string>> records;
@@ -102,31 +131,6 @@ void dataFileParser(void) {
   //close the file
   fileobject.close();
 
-  // first two lines printed based off of the spacing we calculated earlier
-  std::cout << std::left << std::setw(widths[firstname]) << "Initial" << std::setw(widths[lastname] + buffer) << "Last" << std::setw(widths[salary])  << "Salary"<< std::endl<<"\n"<< std::setw(widths[firstname]) << "--------" << std::setw(widths[lastname] + buffer) << "----------" << std::setw(widths[salary]) << "--------" << std::endl;
-  // for each record in the 2d vector
-  for (int col = 0; col < records.size(); col++) { 
-    // for each field in each record
-    for (int row = 0; row < records[col].size(); row++) { 
-      // if the field is an firstname
-      if (row == firstname) { 
-        //calculate the initial by getting first character of the first name
-        std::string initial = std::string(1, records[col][row].at(0)) + ".";
-        // space using the widths we calculated earlier
-        std::cout << std::setw(widths[row]) << initial; 
-      }
-      // if the field is a lastname
-      if (row == lastname) { 
-        //display the last name with the buffer
-        std::cout << std::setw(widths[row] + buffer) << records[col][row];
-      }
-      // if the field is a salary
-      if (row == salary) { 
-        //display the salary with a pound sign 
-        std::cout << std::left << "£" << records[col][row];
-      }
-    }
-    std::cout << std::endl;
-  }
+  displayTable(records,widths);
 }
 
