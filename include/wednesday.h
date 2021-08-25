@@ -4,67 +4,80 @@
 #include <vector>
 #include <iomanip>
 
-void phoneDirectory() {
-
+void phoneDirectory(void) {
+  //the users search criteria
   std::string search;
-
+  //line that is read
+  std::string line;
+  //creating an input stream
+  std::ifstream file("primer5.csv");
+  //asking the user to enter a name or number to search
 	std::cout << "\nEnter a name or number to search: ";
+  //storing the search criteria as search
 	getline(std::cin, search);
 
-  const std::string FILE_NAME = "contacts.csv";
-  std::ifstream file(FILE_NAME);
-
-  std::string line;
-  std::vector<std::vector<std::string>> records; // 2d vector to hold all rows
-
+  // 2d vector to hold all rows
+  std::vector<std::vector<std::string>> records; 
+  //retrieving the line from the phonebook
   while(getline(file, line)) {
     // setup variables to split each record into
     std::stringstream stream(line);
+    //string to store the fields
     std::string field;  
+    //vector to store list of all rows
     std::vector<std::string> rowList;
-
-    while(getline(stream, field, ',')) { // split the row into a fields where there are commas
-      rowList.push_back(field); // push this new word to the row list
-			std::cout << "\nXXX: " << field;
+    // split the row into a fields where there are commas
+    while(getline(stream, field, ',')) { 
+      // push this new word to the row list
+      rowList.push_back(field); 
     }
-    records.push_back(rowList); // push this record onto the list of all rows
+    // push this record onto the list of all rows
+    records.push_back(rowList);
   }
+  //close the file
   file.close();
-  return records;
-}
-	int records = data.size();
 
-  std::cout << "Searching " << records << " records ...\n\n";
+  //display the number of records that are being searched
+  std::cout << "Searching " << records.size() << " records ...\n\n";
 
-  bool found = false; // flag to see if search has been found
+  // boolean to see if search has been found
+  bool found = false; 
 
-  // check every item in the 2d vector
-  for (int col = 0; col < records; col++) { 
-    for (int row = 0; row < records; row++) {
-      if (search == data[col][row] { // if the data in the field matches the search
-        std::cout << "Contact details:\n" << data[col][0] << ", T:" << data[col][1] << std::endl;
+  // check every item in the column
+  for (int col = 0; col < records.size(); col++) { 
+    // check every item in the row
+    for (int row = 0; row < records.size(); row++) {
+      // if the data in the field matches the search
+      if (search == records[col][row]) { 
+        //display the contat details to the user
+        std::cout << "Contact details:\n" << records[col][0] << ", T:" << records[col][1] << std::endl;
         found = true;
       }
     }
   }
-  if (!found) { // message for if nothing is found
+  //if the search could not find the record
+  if (!found) { 
+    // message displayed that nothing is found
     std::cout << "Sorry, no contact details found\n"; 
   }
 }
 
 
 void dataFileParser(void) {
+  //declare variables
   int buffer = 2;
-  int initial = 1;
+  int firstname = 0;
   int lastname = 1;
   int salary =2;
+  int widths[3] = {0, 0, 0};
   std::string line;
   std::vector<std::vector<std::string>> records;
-  int widths[3] = {0, 0, 0};
   std::ifstream fileobject;
 
+  //open file primer6
   fileobject.open("primer6.csv");
 
+  //get each line within the file
   while(getline(fileobject, line)) {
     // setup variables to split each record into
     std::stringstream stream(line);
@@ -72,35 +85,48 @@ void dataFileParser(void) {
     std::vector<std::string> rowList;
 
     int index = 0;
-    while(getline(stream, field, ',')) { // split the row into a fields where there are commas
-      if (field.length() > widths[index]) { // keep a running tally of the length of the longest word for spacing
+    // split the row into a fields where there are commas
+    while(getline(stream, field, ',')) { 
+      // keep a running tally of the length of the longest word for spacing
+      if (field.length() > widths[index]) { 
         widths[index] = field.length();
       }
-      index++; // keep track of which column
-      rowList.push_back(field); // push this new word to the row list
+      // keep track of which column
+      index++; 
+      // push this new word to the row list
+      rowList.push_back(field); 
     }
-    records.push_back(rowList); // push this record onto the list of all rows
+    // push this record onto the list of all rows
+    records.push_back(rowList); 
   }
-
+  //close the file
   fileobject.close();
 
   // first two lines printed based off of the spacing we calculated earlier
-  std::cout << std::left << std::setw(widths[initial]) << "Initial" << std::setw(widths[lastname] + buffer) << "Last" << std::setw(widths[salary])  << "Salary"<< std::endl;  
-  std::cout << std::setw(widths[initial]) << "--------" << std::setw(widths[lastname] + buffer) << "----------" << std::setw(widths[salary]) << "--------" << std::endl;
-  
-  for (int i = 0; i < records.size(); i++) { // for each record in the 2d vector
-    for (int j = 0; j < records[i].size(); j++) { // for each field in each record
-      if (j == initial) { // if the field is an initial
-        std::string initial = std::string(1, records[i][j].at(0)) + ".";
-        std::cout << std::setw(widths[j]) << initial; // space using the widths we calculated earlier
+  std::cout << std::left << std::setw(widths[firstname]) << "Initial" << std::setw(widths[lastname] + buffer) << "Last" << std::setw(widths[salary])  << "Salary"<< std::endl<<"\n"<< std::setw(widths[firstname]) << "--------" << std::setw(widths[lastname] + buffer) << "----------" << std::setw(widths[salary]) << "--------" << std::endl;
+  // for each record in the 2d vector
+  for (int col = 0; col < records.size(); col++) { 
+    // for each field in each record
+    for (int row = 0; row < records[col].size(); row++) { 
+      // if the field is an firstname
+      if (row == firstname) { 
+        //calculate the initial by getting first character of the first name
+        std::string initial = std::string(1, records[col][row].at(0)) + ".";
+        // space using the widths we calculated earlier
+        std::cout << std::setw(widths[row]) << initial; 
       }
-      if (j == lastname) { // if the field is a lastname
-        std::cout << std::setw(widths[j] + buffer) << records[i][j];
+      // if the field is a lastname
+      if (row == lastname) { 
+        //display the last name with the buffer
+        std::cout << std::setw(widths[row] + buffer) << records[col][row];
       }
-      if (j == salary) { // if the field is a salary
-        std::cout << std::left << "£" << records[i][j];
+      // if the field is a salary
+      if (row == salary) { 
+        //display the salary with a pound sign 
+        std::cout << std::left << "£" << records[col][row];
       }
     }
     std::cout << std::endl;
   }
 }
+

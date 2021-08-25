@@ -143,6 +143,7 @@ void carClass() {
   }
 }
 
+//constructor shape
 struct shape {
   float radius;
   float length;
@@ -152,6 +153,7 @@ struct shape {
   float height;
 };
 
+//class circle uses radius from shap
 class circle: public shape {
   public:
     circle(){}
@@ -160,7 +162,7 @@ class circle: public shape {
       radius = Radius;
     }
 };
-
+//class rectangle uses length and width from shape
 class rectangle: public shape {
   public:
     rectangle(){}
@@ -170,7 +172,7 @@ class rectangle: public shape {
       width = Width;
     }
 };
-
+//class trapezoid uses baseA baseB and height from shape
 class trapezoid: public shape {
   public:
     trapezoid(){}
@@ -181,7 +183,7 @@ class trapezoid: public shape {
       height = Height;
     }
 };
-
+//areaOf calculates the area of the given shape
 class AreaOf{
   private:
     float PI = 3.1415;
@@ -196,7 +198,7 @@ class AreaOf{
       return ((Trapezoid.baseA + Trapezoid.baseB)/2)*Trapezoid.height;
     }
 };
-
+//displays the area of the given sizes for given shape
 void areaOf(void) {
   AreaOf area;
   std::cout<<"Area of Circle (r = 4.5): "<<area.size(circle(4.5))<<"\n";
