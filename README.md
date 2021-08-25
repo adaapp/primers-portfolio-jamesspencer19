@@ -80,7 +80,10 @@ For Primer 9 I created a complete program that instantiates an instance of a ‘
 A challenge with this primer is that the user should not be able to turn an engine that is on, on likewise for turning the engine off and locking/unlocking the car. So to do this I needed to check the current state of the engine against the desired change. If they then matched an error message was displayed to the user.
 
 ### Primer 10 - Area of
-I designed and created a general “AreaOf” class that provides a single method ‘size’ that can differentiate and correctly calculate 3 out of the 5 specific shape types from the list: rectangles, circles, squares, triangles or trapezoids; ensure you implement the version that includes constructor, destructor and overloaded methods. Remove or suitable renaming or retype any variables to improve its overall quality standard. Once implemented, ensure your program includes several calls in order to recreate the example output (as illustrated below), your examples will be related to your selected shape types.
+I designed and created a general “AreaOf” class that provides a single method ‘size’ that correctly the area of: rectangles, circles and trapezoids; implementing constructors and destructors. Correctly calculating the following:
+* Area of Circle (r = 4.5): 63.6172
+* Area of Rectangle (w = 4, l = 5.9): 23.6
+* Area of Trapezoid (b = 14, h = 7.5, a = 6): 75
 
 #### Reflection (as well as issues, challenges & resolutions)
 With Primer 10 I managed to correctly calculate the area of the given shape, however within the timeframe I was unable to add overloaded methods or add the functionality to differentiate and correctly calculate 3 out of the 5 specific shape types from the list.
