@@ -1,7 +1,7 @@
 # Primer Portfolio
 ## Section 1 - Primer Challenges
 ### Primer 1 - Fahrenheit / Centigrade Conversion
-This challenge requires us to allow a user to enter a value before selecting whether to convert it from Fahrenheit to Centigrade or Centigrade to Fahrenheit. As part of the initial design the conversion algorithms were needed for both calculations. 
+This challenge requires me to allow a user to enter a value before selecting whether to convert it from Fahrenheit to Centigrade or Centigrade to Fahrenheit. As part of the initial design the conversion algorithms were needed for both calculations. 
 
 To help complete this challenge I needed to break the overall problem down into the following main tasks: 
 * Get data from the user
@@ -10,10 +10,10 @@ To help complete this challenge I needed to break the overall problem down into 
 * Create a method to convert C->F
  
 #### Reflection (as well as issues, challenges & resolutions)
-The biggest issue was related to testing the areas my solution failed, originally, I tested to see if it worked - however, it wasn’t until I tried to break it that I found some of the more serious issues with my design and implementation.  For example, ...
+When completing Primer 1, I realised that it was best to declare my conversion functions separately instead of calculating the conversion when the user specified which conversion they wanted to make. This then made it much easier to implement the Kelvin functionality.
 
 ### Primer 2 - Self-service Checkout
-This challenge requires us to allow the user to enter a quantity of an item and then followed by the ‘per item’ cost. This process is then repeated until the quantity entered is <= 0. At which point three values are calculated and displayed to the user.
+This challenge requires me to allow the user to enter a quantity of an item and then followed by the ‘per item’ cost. This process is then repeated until the quantity entered is <= 0. At which point three values are calculated and displayed to the user.
 
 To complete this challenge I broke the task down into the following steps:
 * Create a loop that repeatedly asks the user for the amount of items and the price per the item, which stops when the user enters zero.
@@ -23,7 +23,7 @@ To complete this challenge I broke the task down into the following steps:
 An issue that I encountered whilst completing Primer 2 was how I should approach the loop to ask the user to enter item quantity and price. The resolution to this was to research the different types of loops, I came to the conclusion to use a while loop. Another issue that I faced was with the rounding of the Subtotal, Shopping Tax and Total, this is where I had to multiply the value by 100 and then divide by 100 to round the float to 2dp.
 
 ### Primer 3 - Password Complexity Checker
-This primer required me to write a C++ program that determines the complexity of password based around the following rules:
+This primer required me to write a program that determines the complexity of password based around the following rules:
 * Weak (value: 1) – only numeric or only alphabetic characters
 * Moderate (value: 2) – at least 4 characters and is not ‘Weak’, ‘Strong’ or ‘Very Strong’
 * Strong (value: 3) – at least 8 characters; including at least 2 numeric and at least 4 alphabetic
@@ -34,7 +34,7 @@ I approached this by creating a for loop that iterated through the password to c
 I first created this program by directly returning the outcome of the password complexity checker, however after reading the brief I realised that I was unable to return a "String" as my function may need to be used with other languages. So I then changed this to return a numeric value which is then converted to the password strength.
 
 ### Primer 4 - Employee List Removal
-Primer 3 required me to create a C++ program that displays a list of employee names. Once finished, I needed to prompt the user for an employee name and remove it for the list and then display the remaining names, each on its own line.
+Primer 3 required me to create a program that displays a list of employee names. Once finished, I needed to prompt the user for an employee name and remove it for the list and then display the remaining names, each on its own line.
 To complete this challenge I broke the task down into the following steps:
 * Create a vector containing the employees that are part of the list.
 * Display the employee names to the user with the amount of employees in the list.
@@ -60,12 +60,12 @@ Primer 6 required me to process the records stored in a csv and then display the
 For Primer 6 I spent the majority of my time understanding sample code for the proccesses that were taken to format the data in the employee CSV file into the table that is displayed for the user. I then optimised the code by separating where the user is displayed the table into a separate function, which takes in the vector and the widths.
 
 ### Primer 7 - Sleep Timer
-For Primer 6 I created a C++ program that blocked further execution (in seconds, based on the value) of a passed parameter when called. To complete this I used the standard function```::sleep_for(std::chrono::seconds(seconds))```. This meant that the thread was paused for the given amount of time in seconds.
+For Primer 7 I created a C++ program that blocked further execution (in seconds, based on the value) of a passed parameter when called. To complete this I used the standard function```::sleep_for(std::chrono::seconds(seconds))```. This meant that the thread was paused for the given amount of time in seconds.
 #### Reflection (as well as issues, challenges & resolutions)
 I found this particular primer the simplest after I discovered the use of sleep_for. The outcome of this primer was that the thread was stopped for the given duration of time and resumed after the timer had completed.
 
 ### Primer 8 - Joining & Detaching Threads (Part A)
-Part A - I wrote a function that initialises two threads; each thread called a unique timer function. Each timer is set using a global variable; my first timer duration being 5 seconds, my second was for 10 seconds. I displayed the start and end of each timer as well as the start and end of the main thread. After creating the two timers I then ran each on an individual thread and used ```.join``` to join the threads which blocked the main thread from executing
+For Primer 8- Part A I wrote a function that initialises two threads; each thread called a unique timer function. Each timer is set using a global variable; my first timer duration being 5 seconds, my second was for 10 seconds. I displayed the start and end of each timer as well as the start and end of the main thread. After creating the two timers I then ran each on an individual thread and used ```.join``` to join the threads which blocked the main thread from executing
 
 ### Primer 8 - Joining & Detaching Threads (Part B)
 For Primer 8- Part B I wrote a function that creates and detaches two threads; each thread calling a unique timer function. Each timer is set using a global variable; my first timer duration should being 5 seconds, your second should be 10 seconds. Display the start and end of each timer as well as the start and end of the main thread; reuse the timer functions from the previous exercise. After creating the two timers I then used ```.detach()``` to detach the threads. The outcome of this was the threads ran in the background and did not block the main thread from executing.
