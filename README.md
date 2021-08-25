@@ -87,6 +87,7 @@ I designed and created a general “AreaOf” class that provides a single metho
 
 #### Reflection (as well as issues, challenges & resolutions)
 With Primer 10 I managed to correctly calculate the area of the given shape, however within the timeframe I was unable to add overloaded methods or add the functionality to differentiate and correctly calculate 3 out of the 5 specific shape types from the list.
+
 ---
 ## Section 2 - Programming Paradigms
 ### Programming Paradigms
